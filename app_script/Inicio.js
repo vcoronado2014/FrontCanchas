@@ -10,7 +10,7 @@ $(document).ready(function () {
 
     $('#principal').hide();
     $('#loading').show();
-/*
+
     if (sessionStorage != null) {
 
         if (sessionStorage.getItem("Id") != null) {
@@ -48,7 +48,7 @@ $(document).ready(function () {
 
 
     });
-*/
+
 
     function InicioViewModel(data) {
         var self = this;
@@ -97,7 +97,7 @@ $(document).ready(function () {
 
         self.items = ko.observableArray(items);
         */
-
+        ko.mapping.fromJS(data, {}, self);
         
 
 
