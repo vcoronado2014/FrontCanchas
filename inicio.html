@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="." />
+    <meta name="keywords" content="HTML, CSS, JS, JavaScript, framework, metro, front-end, frontend, web development" />
+    <meta name="author" content="Victor Coronado" />
+    <title>Inicio</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Custom Fonts -->
+    <link href="Content/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+    <!-- metis menu -->
+    <link href="Content/metisMenu.min.css" rel="stylesheet" type="text/css"/>
+
+    <!-- sb admin -->
+    <link href="Content/sb-admin-2.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="Content/jquery.validate.bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.min.css"/>
+    <link href="Content/morris.css" rel="stylesheet" />
+    <link href="Content/sweetalert.css" rel="stylesheet" />
+
+    <link href="Content/pnotify.custom.min.css" rel="stylesheet" />
+    <link href="Content/site.css" rel="stylesheet" />
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- jQuery -->
+    <script src="Scripts/jquery-1.11.3.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="Scripts/bootstrap.min.js"></script>
+
+    <script src="Scripts/knockout-3.4.1.js"></script>
+
+
+    <script src="Scripts/jquery.validate.min.js"></script>
+
+    <script src="Scripts/sweetalert.js"></script>
+    <script src="Scripts/pnotify.custom.min.js"></script>
+
+    <script src="Scripts/moment.js"></script>
+
+    <script src="Scripts/lib/raphael.min.js"></script>
+    <script src="Scripts/morris.js"></script>
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.min.js"></script>
+    <script src="Scripts/sb-admin-2.js"></script>
+    <script src="Scripts/metisMenu.js"></script>
+
+    <script src="js/jquery.signalR-2.2.0.js"></script>
+    <script src="http://signalr.cpas.cl/signalr/hubs"></script>
+    <script src="app_script/signalrApp.js"></script>
+<!-- infuser.js -->
+
+    <script src="Scripts/infuser.js"></script>
+    <script src="Scripts/koExternalTemplateEngine_all.js"></script>
+
+    <script src="const.js"></script>
+
+    <script src="app_script/inicio.js"></script>
+    
+
+
+
+</head>
+<body class="bodyFixed">
+<div class="container" id="loading">
+
+</div>
+
+<div class="container" id="principal">
+    <!-- encabezado -->
+    <div data-bind="template: { name: 'encabezado', templateUrl: 'templates',  ajax: { cache: false } }"></div>
+
+    <!-- pie -->
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container-fluid">
+            <a href="#"><i class="fa fa-user-circle"></i>&nbsp;<span  data-bind="text: nombreCompleto"></span>&nbsp;<span data-bind="text: nombreRol"></span></a>
+            <a href="#" class="pull-right"><i class="fa fa-calendar"></i>&nbsp;<span data-bind="text: birthDay"></span></a>
+        </div>
+    </nav>
+
+
+</div>
+
+</body>
+</html>

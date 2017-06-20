@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head runat="server">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="." />
+    <meta name="keywords" content="HTML, CSS, JS, JavaScript, framework, metro, front-end, frontend, web development" />
+    <meta name="author" content="Victor Coronado,Juan Morán" />
+    <title>Ingreso</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Custom Fonts -->
+    <link href="Content/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+    <!-- metis menu -->
+    <link href="Content/metisMenu.min.css" rel="stylesheet" type="text/css"/>
+
+    <!-- sb admin -->
+    <link href="Content/sb-admin-2.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="Content/jquery.validate.bootstrap.css" rel="stylesheet" type="text/css"/>
+
+    <link href="Content/site.css" rel="stylesheet" />
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- jQuery -->
+    <script src="Scripts/jquery-1.11.3.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="Scripts/bootstrap.min.js"></script>
+
+    <script src="Scripts/knockout-3.4.1.js"></script>
+
+    <!-- metis menu -->
+    <script src="Scripts/metisMenu.min.js"></script>
+
+    <!-- sb admin -->
+    <script src="Scripts/sb-admin-2.min.js"></script>
+
+    <script src="Scripts/jquery.validate.min.js"></script>
+
+    <script src="js/jquery.signalR-2.2.0.js"></script>
+    <script src="http://signalr.cpas.cl/signalr/hubs"></script>
+    <script src="app_script/signalrApp.js"></script>
+
+    <script src="const.js"></script>
+
+    <script src="app_script/LoginCpas.js"></script>
+
+
+</head>
+<body>
+<div class="container" id="loading">
+</div>
+<div class="container" id="principal">
+    <div class="row">
+        <div class="col-md-3">&nbsp</div>
+        <div class="panel panel-default panel-primary col-xs-12 col-md-6 panelLogin">
+            <div class="panel-heading text-center"><h4>Ingreso al Sistema</h4></div>
+            <div class="panel-body">
+
+                <div class="row">
+
+                    <div class="col-xs-12">
+                        <div class="input-group input-group-lg">
+                                <span class="input-group-addon" id="basic-addon1">
+                                    <i class="fa fa-user"></i>
+                                </span>
+                            <input type="text" class="form-control" name="usuario" placeholder="Ingrese nombre de usuario" aria-describedby="basic-addon1" data-bind="value:usuario" />
+                        </div>
+
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+
+                    <div class="col-xs-12">
+                        <div class="input-group input-group-lg">
+                                <span class="input-group-addon" id="basic-addonpass">
+                                    <i class="fa fa-asterisk"></i>
+                                </span>
+                            <input type="password" class="form-control" name="passwrod" placeholder="Ingrese clave" aria-describedby="basic-addonpass" data-bind="value:password"/>
+                        </div>
+                    </div>
+
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-xs-6">
+                        <button type="button" class="btn btn-warning btn-lg col-xs-12 col-md-6">
+                            Salir
+                        </button>
+                    </div>
+                    <div class="col-xs-6">
+                        <button type="button" class="btn btn-primary btn-lg  col-xs-12 col-md-6 pull-right" data-bind="click: autentificar">
+                            Entrar
+                        </button>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+            <div class="panel-footer">
+
+                <div class="alert alert-warning" role="alert">
+                    <span id="mensaje"></span>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>
+</body>
+</html>
