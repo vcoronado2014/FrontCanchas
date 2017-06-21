@@ -1,7 +1,7 @@
 ﻿        .panelLogin{
             margin-top:10%;
         }
-        .bodyFixed { padding-top: 70px; padding-bottom:70px;}
+        .bodyFixed { padding-top: 100px; padding-bottom:70px;}
         .fontusuario {
             font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
             font-size: 1.5rem;
@@ -230,7 +230,9 @@ div.dataTables_filter input {
 .fg-white{
     color: white;
 }
-
+.active{
+    background-color: darkseagreen;
+}
 
 @media only screen and (min-width: 40.0625em) {
     .sweet-alert.sweetalert-xs { width: 500px; }

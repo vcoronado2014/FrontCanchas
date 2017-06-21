@@ -26,7 +26,9 @@
     <link href="Content/sweetalert.css" rel="stylesheet" />
 
     <link href="Content/pnotify.custom.min.css" rel="stylesheet" />
+    <link href="css/mdb.css" rel="stylesheet" />
     <link href="Content/site.css" rel="stylesheet" />
+    
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -60,6 +62,7 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.min.js"></script>
     <script src="Scripts/sb-admin-2.js"></script>
     <script src="Scripts/metisMenu.js"></script>
+    <script src="js/mdb.js"></script>
 
     <script src="js/jquery.signalR-2.2.0.js"></script>
     <script src="http://signalr.cpas.cl/signalr/hubs"></script>
@@ -77,23 +80,33 @@
 
 
 </head>
-<body class="bodyFixed">
+<body class="bodyFixed" style="background-image: url(../img/pasto_1.jpg);background-size: 100% 50px;background-repeat: no-repeat">
 <div class="container" id="loading">
 
 </div>
 
+
 <div class="container" id="principal">
+
     <!-- encabezado -->
     <div data-bind="template: { name: 'encabezado', templateUrl: 'templates',  ajax: { cache: false } }"></div>
 
     <!-- pie -->
-    <nav class="navbar navbar-default navbar-fixed-bottom">
-        <div class="container-fluid">
-            <a href="#"><i class="fa fa-user-circle"></i>&nbsp;<span  data-bind="text: nombreCompleto"></span>&nbsp;<span data-bind="text: nombreRol"></span></a>
-            <a href="#" class="pull-right"><i class="fa fa-calendar"></i>&nbsp;<span data-bind="text: birthDay"></span></a>
-        </div>
-    </nav>
+    <div data-bind="template: { name: 'pie', templateUrl: 'templates',  ajax: { cache: false } }"></div>
 
+    <div class="col-xs-12 page-header">
+        <h3 class="col-xs-9 col-md-10">Listado <small>de XXXXXXXXXXXX</small></h3>
+    </div>
+
+    <div class="col-xs-4">
+        <i class="fa fa-5x fa-calendar">
+
+        </i>
+    </div>
+
+<section>
+
+</section>
 
 </div>
 
