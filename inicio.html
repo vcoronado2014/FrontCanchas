@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head runat="server">
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -80,7 +80,7 @@
 
 
 </head>
-<body class="bodyFixed" style="background-image: url(../img/pasto_1.jpg);background-size: 100% 50px;background-repeat: no-repeat">
+<body class="bodyFixed">
 <div class="container" id="loading">
 
 </div>
@@ -94,19 +94,28 @@
     <!-- pie -->
     <div data-bind="template: { name: 'pie', templateUrl: 'templates',  ajax: { cache: false } }"></div>
 
+<!--
     <div class="col-xs-12 page-header">
         <h3 class="col-xs-9 col-md-10">Listado <small>de XXXXXXXXXXXX</small></h3>
     </div>
+-->
 
-    <div class="col-xs-4">
-        <i class="fa fa-5x fa-calendar">
-
-        </i>
+    <!--Panel-->
+    <div class="col-xs-12 col-md-4 card card-block">
+        <div class="col-xs-12 col-md-4 text-center">
+            <i class="fa fa-5x fa-calendar" style="color: cadetblue;"></i>
+        </div>
+        <div class="col-xs-12 col-md-8">
+            <h4 class="card-title"><strong>Agendamiento</strong></h4>
+            <p class="card-text">Ingrese aquí para crear/modificar o ver su agenda.</p>
+            <div class="flex-row text-right">
+                <a class="btn btn-default">Ver</a>
+            </div>
+        </div>
     </div>
+    <!--/.Panel-->
 
-<section>
 
-</section>
 
 </div>
 
