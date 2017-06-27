@@ -181,11 +181,13 @@ $(document).ready(function () {
                 dataTipoCancha[0].TipoMedida = 0;
                 dataTipoCancha[0].CantidadJugadores = 0;
                 dataTipoCancha[0].InstId = sessionStorage.getItem("InstId");
+                ko.applyBindings(new TipoCanchaViewModel(dataSuperficie[0], dataTipoCancha[0], idRequest));
             }
-            ko.applyBindings(new TipoCanchaViewModel(dataSuperficie[0], dataTipoCancha[0][0], idRequest));
-
+            else {
+                ko.applyBindings(new TipoCanchaViewModel(dataSuperficie[0], dataTipoCancha[0][0], idRequest));
+            }
         },
-        function (){
+        function (error){
             //alguna ha fallado
             //alert('error');
             $('#principal').show();

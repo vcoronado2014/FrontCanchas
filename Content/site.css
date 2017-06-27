@@ -1,4 +1,10 @@
-﻿        .panelLogin{
+﻿.padding-left-10
+{
+    padding-left: 10px;
+}
+
+
+        .panelLogin{
             margin-top:10%;
         }
         .bodyFixed { padding-top: 120px; padding-bottom:70px;}
@@ -211,7 +217,7 @@ hr.style18:before {
     margin-top: 90px;
 }
 div.dataTables_filter input {
-    width: 12em;
+    /*width: 12em;*/
     margin-left: 0.5em;
 }
 #tablaArchivos_filter label{ visibility: hidden}
