@@ -122,7 +122,10 @@ $(document).ready(function () {
 
         }
 
-
+        //cancelar
+        cancelar = function () {
+            window.location.href = "ListarTiposCancha.html";
+        }
         //los valores que iran al formulario
         //si el idRequest = 0 es nuevo
         if (idRequest == '0')

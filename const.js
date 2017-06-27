@@ -207,6 +207,7 @@ function Menu()
     if (sessionStorage != null)
     {
         var rolId = sessionStorage.getItem("RolId");
+        permitirCrear = ko.observable(false);
         if (rolId != null)
         {
             shouldShowMessage = ko.observable(false);
@@ -255,7 +256,8 @@ function Menu()
                     //mostrar reporte Usuarios
                     mostrarRptUsuarios = ko.observable(true);
                     //mostrar reporte instituciones
-                    mostrarRptInstituciones = ko.observable(true);                    
+                    mostrarRptInstituciones = ko.observable(true);        
+                    permitirCrear = ko.observable(true);            
                     break;
                 //administrador centro educacional
                 case '2':
@@ -275,6 +277,7 @@ function Menu()
                     menuMenuReportes = ko.observable(true);
                     //mostrar reporte Usuarios
                     mostrarRptUsuarios = ko.observable(true);
+                    permitirCrear = ko.observable(true);
                     break;
                 //presidente
                 case '3':
@@ -295,6 +298,7 @@ function Menu()
                     menuMenuReportes = ko.observable(true);
                     //mostrar reporte Usuarios
                     mostrarRptUsuarios = ko.observable(true);
+                    permitirCrear = ko.observable(true);
                     break;
                 //tesorero, secretario
                 case '4':
@@ -309,6 +313,7 @@ function Menu()
                     menuProyecto = ko.observable(true);
                     menuProyectoListar = ko.observable(true);
                     menuMenuReportes = ko.observable(true);
+                    permitirCrear = ko.observable(true);
                     break;
                 default:
                     menuMenu = ko.observable(true);
