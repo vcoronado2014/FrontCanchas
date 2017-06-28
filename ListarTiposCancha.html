@@ -107,7 +107,7 @@
 
     <div class="col-xs-12 page-header">
         <h3 class="col-xs-9 col-md-10"><span data-bind="text: titulo"></span> <small> tipo de Cancha</small></h3>
-        <a href="CrearTipoCancha.html?id=0&ELIMINADO=0" class="col-xs-3 col-md-2" data-bind="visible: permitirCrear"><i class="fa fa-5x fa-plus-circle pull-right fg-burlywood" data-toggle="tooltip" data-placement="left" title="Crear Nuevo Tipo Cancha"></i></a>
+        <a href="CrearTipoCancha.html?id=0" class="col-xs-3 col-md-2" data-bind="visible: permitirCrear"><i class="fa fa-5x fa-plus-circle pull-right fg-burlywood" data-toggle="tooltip" data-placement="left" title="Crear Nuevo Tipo Cancha"></i></a>
     </div>
 
     <div class="col-xs-12">
@@ -125,9 +125,7 @@
 
                     <a data-bind="attr: { href: $data.UrlEditar }, visible: shouldShowMessage"><i class="fa fa-2x fa-edit fg-burlywood"  data-toggle="tooltip" data-placement="left" title="Editar"></i></a>
                     <a data-bind="click: eliminar, visible: shouldShowMessage"><i class="fa fa-2x fa-trash fg-brown"></i></a>
-                    <!--
-                    <a data-bind="attr: { href: $data.UrlEliminar }, visible: permitirEliminar "><i class="fa fa-2x fa-trash"></i></a>
-                    -->
+
                 </td>
 
                 <td><span data-bind="text: $data.Nombre"></span></td>

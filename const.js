@@ -18,6 +18,14 @@ $('#ancoreSesion').on('click', function () {
 
 });
 
+function ObtenerUrlFoto()
+{
+    //return 'https://localhost:44364/api/' + api;
+    //return 'http://api.asambleas.cl/api/' + api;
+    return 'http://localhost:64569/';
+    //http://172.16.116.138/apiasambleas/api/
+}
+
 function ObtenerUrl(api)
 {
     //return 'https://localhost:44364/api/' + api;
