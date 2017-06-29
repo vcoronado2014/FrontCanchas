@@ -64,36 +64,85 @@ $(document).ready(function () {
         Menu();
         //guardar
         guardar = function (element) {
+            var filesUno = $("#txtArchivo").get(0).files;
+            var fotoUno = "";
+            if (filesUno.length > 0)
+                fotoUno = filesUno[0].name;
+            else{
+                if (element.esNuevo() == false)
+                {
+                    fotoUno = element.frmFotoUnoOriginal;
+                }
+            }
             
+            var filesDos = $("#txtArchivoDos").get(0).files;
+            var fotoDos = "";
+            if (filesDos.length > 0)
+                fotoDos = filesDos[0].name;
+            else{
+                if (element.esNuevo() == false)
+                {
+                    fotoDos = element.frmFotoDosOriginal;
+                }
+            }
+
+
+            var filesTres = $("#txtArchivoTres").get(0).files;
+            var fotoTres = "";
+            if (filesTres.length > 0)
+                fotoTres = filesTres[0].name;
+            else{
+                if (element.esNuevo() == false)
+                {
+                    fotoTres = element.frmFotoTresOriginal;
+                }
+            }                                
+
             var tipoCancha = {
                 Id: element.idElemento(),
                 Nombre: element.frmNombre(),
                 TicId: $('#selectIdTic').val(),
                 ValorSegmento: element.frmValorSegmento(),
                 DescuentoSegmento: element.frmDescuentoSegmento(),
-                Disciplina: $('#selectIdDisciplina').text(),
-                //Ancho: element.frmAncho(),
-                //TipoMedida: $('#selectIdTipoMedida').val(),
-                //CantidadJugadores: element.frmNumeroJugadores(),
+                Disciplina: $('#selectIdDisciplina').val(),
+                FotoUno: fotoUno,
+                FotoDos: fotoDos,
+                FotoTres: fotoTres,
                 InstId: element.instId()
             }
-            /*
-            if (tipoCancha.Nombre != "")
-            {
-                var operacion = "PUT";
-                if (self.esNuevo() == false)
-                    operacion = "POST";
-                    
-                var guardarTipoCancha = jQuery.ajax({
-                    url: ObtenerUrl('TipoCancha'),
-                    type: operacion,
-                    data: ko.toJSON(tipoCancha),
-                    contentType: "application/json",
-                    dataType: "json"
-                });
+            //los valores requeridos son Nombre, TicId y disciplina
+            if (tipoCancha.Nombre == ""){
+                getNotify('error', 'Requerido', 'Nombre Requerido.');
+                return;
+            }
+            if (tipoCancha.TicId == null){
+                getNotify('error', 'Requerido', 'Tipo Cancha Requerido.');
+                return;
+            }
+            if (tipoCancha.Disciplina == null){
+                getNotify('error', 'Requerido', 'Disciplina Requerida.');
+                return;
+            }
+            //comenzamos con el guardado
+            var operacion = "PUT";
+            if (self.esNuevo() == false)
+                operacion = "POST";
 
-               $.when(guardarTipoCancha).then(
+            var guardarCancha = jQuery.ajax({
+                url: ObtenerUrl('Canchas'),
+                type: operacion,
+                data: ko.toJSON(tipoCancha),
+                contentType: "application/json",
+                dataType: "json"
+            });            
+
+               $.when(guardarCancha).then(
                     function(dataGuardar){
+                        //antes de mostrar el mensaje de guardado se envían los archivos a guardar
+                        SubirArchivo(element, filesUno);
+                        SubirArchivo(element, filesDos);
+                        SubirArchivo(element, filesTres);
+
                         swal({
                                 title: "Guardado",
                                 text: "El Registro ha sido guardado con éxito.",
@@ -110,7 +159,7 @@ $(document).ready(function () {
                                 if (isConfirm) {
                                     
                                     //EnviarMensajeSignalR('Se ha creado/modificado una nueva institución.', "ListarInstitucion.html", "1", sessionStorage.getItem("RolId"), result);
-                                    window.location.href = "CrearTipoCancha.html?id=" + dataGuardar.Id;
+                                    window.location.href = "CrearCancha.html?id=" + dataGuardar.Id;
                                 } else {
                                     swal("Cancelled", "Your imaginary file is safe :)", "error");
                                 }
@@ -124,13 +173,7 @@ $(document).ready(function () {
                         //acá podemos quitar el elemento cargando
                         alert('quitar cargando');
                     }
-                );
-            }
-            else
-            {
-                getNotify('error', 'Requerido', 'Nombre Requerido.');
-            }
-            */
+                );        
 
         }
 
@@ -156,6 +199,8 @@ $(document).ready(function () {
         onFileSelectedUno = function(element, event){
             var selectedFile = event.target.files[0];
             var reader = new FileReader();
+            iconoEliminarUno = ko.observable(true);
+            $("#eliminarUno").attr("style", "visibility: visible");
 
             var imgtag = document.getElementById("imagenUno");
             imgtag.title = selectedFile.name;
@@ -165,9 +210,161 @@ $(document).ready(function () {
                 element.frmFotoUno = event.target.result;
                 imgtag.src = event.target.result;
             };
-
-            reader.readAsDataURL(selectedFile);
+            extensiones_permitidas = new Array(".gif", ".jpg", ".png");
+            if (ValidaExtension(selectedFile, extensiones_permitidas) == true)
+                reader.readAsDataURL(selectedFile);
         }
+        onFileSelectedDos = function (element, event) {
+            var selectedFile = event.target.files[0];
+            var reader = new FileReader();
+            iconoEliminarDos = ko.observable(true);
+            $("#eliminarDos").attr("style", "visibility: visible");
+
+            var imgtag = document.getElementById("imagenDos");
+            imgtag.title = selectedFile.name;
+
+
+            reader.onload = function (event) {
+                element.frmFotoDos = event.target.result;
+                imgtag.src = event.target.result;
+            };
+            extensiones_permitidas = new Array(".gif", ".jpg", ".png");
+            if (ValidaExtension(selectedFile, extensiones_permitidas) == true)
+                reader.readAsDataURL(selectedFile);
+        }
+        onFileSelectedTres = function (element, event) {
+            var selectedFile = event.target.files[0];
+            var reader = new FileReader();
+            iconoEliminarTres = ko.observable(true);
+            $("#eliminarTres").attr("style", "visibility: visible");
+
+            var imgtag = document.getElementById("imagenTres");
+            imgtag.title = selectedFile.name;
+
+
+            reader.onload = function (event) {
+                element.frmFotoTres = event.target.result;
+                imgtag.src = event.target.result;
+            };
+            extensiones_permitidas = new Array(".gif", ".jpg", ".png");         
+            if (ValidaExtension(selectedFile, extensiones_permitidas) == true)
+                reader.readAsDataURL(selectedFile);
+        }
+        onEliminarFoto = function (element, event){
+            var idAccion = event.target.id;
+            var imgtag;
+            var txtElemento;
+            var selectedFile = "";
+            var reader = new FileReader();
+            if (idAccion == 'eliminarUno'){
+                imgtag = document.getElementById("imagenUno");
+                txtElemento = document.getElementById("txtArchivo");
+                $("#eliminarUno").attr("style", "visibility: hidden");
+                element.frmFotoUnoOriginal = "";
+                element.frmFotoUno = "";
+            }
+            if (idAccion == 'eliminarDos'){
+                imgtag = document.getElementById("imagenDos");
+                txtElemento = document.getElementById("txtArchivoDos");
+                $("#eliminarDos").attr("style", "visibility: hidden");
+                element.frmFotoDosOriginal = "";
+                element.frmFotoDos = "";                
+            }
+            if (idAccion == 'eliminarTres'){
+                imgtag = document.getElementById("imagenTres");
+                txtElemento = document.getElementById("txtArchivoTres");
+                $("#eliminarTres").attr("style", "visibility: hidden");
+                element.frmFotoTresOriginal = "";
+                element.frmFotoTres = "";                
+            }
+
+            if (txtElemento.files != null && txtElemento.files.length > 0){
+                txtElemento.files[0].name = "";
+                txtElemento.files[0] = null;
+            }
+
+            imgtag.src = "";
+            imgtag.title = "Sin fotografía";
+
+            if (element.esNuevo()){
+                //llamada ajax.
+                //reader.readAsDataURL(selectedFile);
+            }
+            else{
+                //aplicar despues de la llamada para eliminar solo si es nuevo
+                //reader.readAsDataURL(selectedFile);
+                var tipoCancha = {
+                    Id: element.idElemento(),
+                    Nombre: element.frmNombre(),
+                    TicId: $('#selectIdTic').val(),
+                    ValorSegmento: element.frmValorSegmento(),
+                    DescuentoSegmento: element.frmDescuentoSegmento(),
+                    Disciplina: $('#selectIdDisciplina').val(),
+                    FotoUno: element.frmFotoUnoOriginal,
+                    FotoDos: element.frmFotoDosOriginal,
+                    FotoTres: element.frmFotoTresOriginal,
+                    InstId: element.instId()
+                }
+                //los valores requeridos son Nombre, TicId y disciplina
+                if (tipoCancha.Nombre == "") {
+                    getNotify('error', 'Requerido', 'Nombre Requerido.');
+                    return;
+                }
+                if (tipoCancha.TicId == null) {
+                    getNotify('error', 'Requerido', 'Tipo Cancha Requerido.');
+                    return;
+                }
+                if (tipoCancha.Disciplina == null) {
+                    getNotify('error', 'Requerido', 'Disciplina Requerida.');
+                    return;
+                }
+                //comenzamos con el guardado
+                var operacion = "PUT";
+                if (element.esNuevo() == false)
+                    operacion = "POST";
+                //guardado
+                var guardarCancha = jQuery.ajax({
+                    url: ObtenerUrl('Canchas'),
+                    type: operacion,
+                    data: ko.toJSON(tipoCancha),
+                    contentType: "application/json",
+                    dataType: "json"
+                });  
+
+               $.when(guardarCancha).then(
+                    function(dataGuardar){
+                        //antes de mostrar el mensaje de guardado se envían los archivos a guardar
+
+                        swal({
+                                title: "Guardado",
+                                text: "El Registro ha sido guardado con éxito.",
+                                type: "success",
+                                showCancelButton: false,
+                                confirmButtonClass: "btn-success",
+                                confirmButtonText: "Ok",
+                                cancelButtonText: "No, cancel plx!",
+                                closeOnConfirm: false,
+                                customClass: 'sweetalert-xs',
+                                closeOnCancel: false
+                            },
+                            function (isConfirm) {
+                                if (isConfirm) {
+                                    
+                                    //EnviarMensajeSignalR('Se ha creado/modificado una nueva institución.', "ListarInstitucion.html", "1", sessionStorage.getItem("RolId"), result);
+                                    window.location.href = "CrearCancha.html?id=" + dataGuardar.Id;
+                                } else {
+                                    swal("Cancelled", "Your imaginary file is safe :)", "error");
+                                }
+                            });
+
+                    },
+                    function (){
+                        getNotify('error', 'Error', 'Error de Servidor.');        
+                    }
+                ); 
+
+            }
+        }        
         //los valores que iran al formulario
         //si el idRequest = 0 es nuevo
         if (idRequest == '0')
@@ -185,12 +382,38 @@ $(document).ready(function () {
         self.frmNombre = ko.observable(data[0].Nombre || "");
         self.frmValorSegmento = ko.observable(data[0].ValorSegmento || 0);
         self.frmDescuentoSegmento = ko.observable(data[0].DescuentoSegmento || 0);
-        if (data[0].FotoUno != '')
-            self.frmFotoUno = ObtenerUrlFoto() + ko.observable(data[0].FotoUno || "");
-        else
+        self.frmFotoUnoOriginal = data[0].FotoUno;
+        self.frmFotoDosOriginal = data[0].FotoDos;
+        self.frmFotoTresOriginal = data[0].FotoTres;
+        //foto 1
+        if (data[0].FotoUno != ''){
+            self.frmFotoUno = ObtenerUrlFoto() + ko.observable(data[0].FotoUno || "")();
+            self.iconoEliminarUno = ko.observable(true);
+        }
+        else{
             self.frmFotoUno = '';
-        //seguir aca con las variables
+            self.iconoEliminarUno = ko.observable(false);
+        }
+        
+        //foto 2
+        if (data[0].FotoDos != ''){
+            self.frmFotoDos = ObtenerUrlFoto() + ko.observable(data[0].FotoDos || "")();
+            self.iconoEliminarDos = ko.observable(true);
+        }
+        else{
+            self.frmFotoDos = '';
+            self.iconoEliminarDos = ko.observable(false);
+        }
 
+        //foto 3
+        if (data[0].FotoTres != ''){
+            self.frmFotoTres = ObtenerUrlFoto() + ko.observable(data[0].FotoTres || "")();
+            self.iconoEliminarTres = ko.observable(true);
+        }
+        else{
+            self.frmFotoTres = '';
+            self.iconoEliminarTres = ko.observable(false);
+        }
 
         ko.mapping.fromJS(data, {}, self);
         
@@ -255,21 +478,36 @@ $(document).ready(function () {
         }
     );
 
-/*
-    function onFileSelected(event) {
-        var selectedFile = event.target.files[0];
-        var reader = new FileReader();
+    function SubirArchivo(element, file){
+    
+        if (file.length > 0) {
+            var model = new FormData();
+            model.append("Id", element.idElemento());
+            model.append("UploadedImage", file[0]);
 
-        //var imgtag = document.getElementById("myimage");
-        //imgtag.title = selectedFile.name;
+            var subirArchivoUno = jQuery.ajax({
+                url: ObtenerUrl('Foto'),
+                type: "POST",
+                data: model,
+                contentType: false,
+                processData: false
+            });
+            //promesa
+            $.when(subirArchivoUno).then(
+                function (data) {
+                    return "Ok";
+                },
+                function () {
+                    getNotify('error', 'Error', 'Error de Servidor.');
+                    return "Error";
+                }
+            );
 
+        }
+        else
+            return "Ok";
+    
 
-        reader.onload = function (event) {
-            frmFotoUno = event.target.result;
-        };
-
-        reader.readAsDataURL(selectedFile);
     }
-*/
 
 });

@@ -22,7 +22,7 @@ function ObtenerUrlFoto()
 {
     //return 'https://localhost:44364/api/' + api;
     //return 'http://api.asambleas.cl/api/' + api;
-    return 'http://localhost:64569/';
+    return 'http://localhost:64569/Fotos/';
     //http://172.16.116.138/apiasambleas/api/
 }
 

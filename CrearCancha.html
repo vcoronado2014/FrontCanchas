@@ -139,114 +139,43 @@
             <span id="infoTic">Seleccione Tipo Cancha para ver los detalles</span>
         </div>
     </div>
-    <!-- 
-<div class="alert alert-info" role="alert">...</div>
-        -->
 
-<!--
-    <div class="row">
-
-        <div class="col-xs-12 col-md-6">
-            <label for="basic-url">Nombre</label>
-            <div class="input-group">
-                        <span class="input-group-addon" id="basic-addon1">
-                            <i class="fa fa-user"></i>
-                        </span>
-                <input type="text" class="form-control padding-left-10" name="nombre" id="txtNombre" placeholder="Nombre" aria-describedby="basic-addon1" data-bind="value: frmNombre"   />
-            </div>
-
-        </div>
-
-        <div class="col-xs-12 col-md-6">
-            <label for="basic-url">Tipo Superficie</label>
-            <div class="input-group">
-                <span class="input-group-addon" id="basic-addon8">
-                            <i class="fa fa-globe"></i>
-                        </span>
-                <select id="selectIdTipoSuperficie" class="form-control" data-bind="options: superficies,
-                            optionsText: 'Nombre',
-                            optionsValue: 'Id',
-                            value: selectedSuperficie,
-                            valueAllowUnset: true">
-                    </select>
-            </div>
-
-        </div>
-
-    </div>
-
-    <div class="row padding-top-10">
-        <div class="col-xs-12 col-md-3">
-            <label for="basic-url">Largo</label>
-            <div class="input-group">
-                <span class="input-group-addon" id="basic-addon6">
-                    <i class="fa fa-ellipsis-h"></i>
-                </span>
-                <input type="number" class="form-control padding-left-10" name="largo" id="txtLargo" placeholder="Largo" aria-describedby="basic-addon6"
-                    data-bind="value: frmLargo" />
-            </div>
-
-        </div>
-
-        <div class="col-xs-12 col-md-3">
-            <label for="basic-url">Ancho</label>
-            <div class="input-group">
-                <span class="input-group-addon" id="basic-addon12">
-                <i class="fa fa-ellipsis-h"></i>
-            </span>
-                <input type="number" class="form-control padding-left-10" name="ancho" id="txtAncho" placeholder="Largo" aria-describedby="basic-addon12"
-                    data-bind="value: frmAncho" />
-            </div>
-
-        </div>
-
-        <div class="col-xs-12 col-md-4">
-            <label for="basic-url">Medida</label>
-            <div class="input-group">
-                <span class="input-group-addon" id="basic-addon8">
-                            <i class="fa fa-globe"></i>
-                        </span>
-                <select id="selectIdTipoMedida" class="form-control" data-bind="options: medidas,
-                            optionsText: 'Nombre',
-                            optionsValue: 'Id',
-                            value: selectedMedida,
-                            valueAllowUnset: true">
-                    </select>
-            </div>
-
-        </div>
-
-        <div class="col-xs-12 col-md-2">
-            <label for="basic-url">N° Jugadores</label>
-            <div class="input-group">
-                <span class="input-group-addon" id="basic-addon16">
-                        <i class="fa fa-ellipsis-h"></i>
-                    </span>
-                <input type="number" class="form-control padding-left-10" name="ancho" id="txtNumeroJugadores" placeholder="N° Jug." aria-describedby="basic-addon16"
-                    data-bind="value: frmNumeroJugadores" />
-            </div>
-
-        </div>
-    </div>
--->
     <div class="row padding-top-10">
         <div class="col-md-4 col-xs-12">
             <a href="#" class="thumbnail"> 
+                <i id="eliminarUno" class="fa fa-2x fa-trash fg-burlywood cursorPointer" data-toggle="tooltip" data-placement="right" title="Eliminar esta foto" data-bind="click: onEliminarFoto, visible: iconoEliminarUno"></i>
                 <img id="imagenUno" alt="Sin imágen" style="height: 200px; width: 100%; display: block;" data-bind="attr: { src: frmFotoUno }"> 
             </a>
             <label for="basic-url">Subir Archivo (máximo 3,5 Mb)</label>
             <div class="input-group">
                 <div class="col-xs-12">
-                    <!-- <input type="file" class="form-control" name="archivo" id="txtArchivo" aria-describedby="basic-addon9" onchange="onFileSelectedUno(event)" />-->
                     <input type="file" class="form-control" name="archivo" id="txtArchivo" aria-describedby="basic-addon9" data-bind="event: { change: onFileSelectedUno } " />
                 </div>
             </div>
         </div>
         <div class="col-md-4 col-xs-12"> 
-            <a href="#" class="thumbnail"> <img alt="Sin imágen" src="" style="height: 200px; width: 100%; display: block;"> </a>
+            <a href="#" class="thumbnail"> 
+                <i id="eliminarDos" class="fa fa-2x fa-trash fg-burlywood cursorPointer" data-toggle="tooltip" data-placement="right" title="Eliminar esta foto" data-bind="click: onEliminarFoto, visible: iconoEliminarDos"></i>
+                <img id="imagenDos"  alt="Sin imágen" src="" style="height: 200px; width: 100%; display: block;" data-bind="attr: { src: frmFotoDos }"> 
+            </a>
+            <label for="basic-url">Subir Archivo (máximo 3,5 Mb)</label>
+            <div class="input-group">
+                <div class="col-xs-12">
+                    <input type="file" class="form-control" name="archivoDos" id="txtArchivoDos" aria-describedby="basic-addon9" data-bind="event: { change: onFileSelectedDos } " />
+                </div>
+            </div>            
         </div>
         <div class="col-md-4 col-xs-12"> 
-            <a href="#" class="thumbnail"> <img alt="Sin imágen" src="" style="height: 200px; width: 100%; display: block;"> </a>
+            <a href="#" class="thumbnail"> 
+                <i id="eliminarTres" class="fa fa-2x fa-trash fg-burlywood cursorPointer" data-toggle="tooltip" data-placement="right" title="Eliminar esta foto" data-bind="click: onEliminarFoto, visible: iconoEliminarTres"></i>
+                <img id="imagenTres" alt="Sin imágen" src="" style="height: 200px; width: 100%; display: block;" data-bind="attr: { src: frmFotoTres }">
+             </a>
+            <label for="basic-url">Subir Archivo (máximo 3,5 Mb)</label>
+            <div class="input-group">
+                <div class="col-xs-12">
+                    <input type="file" class="form-control" name="archivoTres" id="txtArchivoTres" aria-describedby="basic-addon9" data-bind="event: { change: onFileSelectedTres } " />
+                </div>
+            </div>                
         </div>
     </div>
 
