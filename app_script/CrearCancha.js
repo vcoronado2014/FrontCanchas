@@ -159,7 +159,7 @@ $(document).ready(function () {
                                 if (isConfirm) {
                                     
                                     //EnviarMensajeSignalR('Se ha creado/modificado una nueva institución.', "ListarInstitucion.html", "1", sessionStorage.getItem("RolId"), result);
-                                    window.location.href = "CrearCancha.html?id=" + dataGuardar.Id;
+                                    window.location.href = "ListarCanchas.html";
                                 } else {
                                     swal("Cancelled", "Your imaginary file is safe :)", "error");
                                 }
@@ -179,7 +179,7 @@ $(document).ready(function () {
 
         //cancelar
         cancelar = function () {
-            window.location.href = "ListarTiposCancha.html";
+            window.location.href = "ListarCanchas.html";
         }
 
         onChangeTic = function(element){

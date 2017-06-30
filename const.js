@@ -224,6 +224,7 @@ function Menu()
             //hijos
             menuMenuUsuarios = ko.observable(false);
             menuMenuInstituciones = ko.observable(false);
+            /*
             menuMenuRendiciones = ko.observable(false);
             menuMenuDocumentos = ko.observable(false);
             menuMenuCalendarrio = ko.observable(false);
@@ -242,6 +243,7 @@ function Menu()
             mostrarRptUsuarios = ko.observable(false);
             //mostrar reporte instituciones
             mostrarRptInstituciones = ko.observable(false);
+            */
             switch(rolId)
             {
                 //super
@@ -251,6 +253,7 @@ function Menu()
                     menuMenu = ko.observable(true);
                     menuMenuUsuarios = ko.observable(true);
                     menuMenuInstituciones = ko.observable(true);
+                    /*
                     menuMenuRendiciones = ko.observable(true);
                     menuMenuDocumentos = ko.observable(true);
                     menuMenuCalendarrio = ko.observable(true);
@@ -264,7 +267,8 @@ function Menu()
                     //mostrar reporte Usuarios
                     mostrarRptUsuarios = ko.observable(true);
                     //mostrar reporte instituciones
-                    mostrarRptInstituciones = ko.observable(true);        
+                    mostrarRptInstituciones = ko.observable(true);
+                    */
                     permitirCrear = ko.observable(true);            
                     break;
                 //administrador centro educacional
@@ -274,6 +278,7 @@ function Menu()
                     menuMenu = ko.observable(true);
                     menuMenuUsuarios = ko.observable(true);
                     //menuMenuInstituciones = ko.observable(true);
+                    /*
                     menuMenuRendiciones = ko.observable(true);
                     menuMenuDocumentos = ko.observable(true);
                     menuMenuCalendarrio = ko.observable(true);
@@ -285,6 +290,7 @@ function Menu()
                     menuMenuReportes = ko.observable(true);
                     //mostrar reporte Usuarios
                     mostrarRptUsuarios = ko.observable(true);
+                    */
                     permitirCrear = ko.observable(true);
                     break;
                 //presidente
@@ -295,6 +301,7 @@ function Menu()
                     menuMenu = ko.observable(true);
                     menuMenuUsuarios = ko.observable(true);
                     //menuMenuInstituciones = ko.observable(true);
+                    /*
                     menuMenuRendiciones = ko.observable(true);
                     menuMenuDocumentos = ko.observable(true);
                     menuMenuCalendarrio = ko.observable(true);
@@ -306,6 +313,7 @@ function Menu()
                     menuMenuReportes = ko.observable(true);
                     //mostrar reporte Usuarios
                     mostrarRptUsuarios = ko.observable(true);
+                    */
                     permitirCrear = ko.observable(true);
                     break;
                 //tesorero, secretario
@@ -314,6 +322,7 @@ function Menu()
                     //shouldShowMessage = ko.observable(true);
 
                     menuMenu = ko.observable(true);
+                    /*
                     menuMenuDocumentos = ko.observable(true);
                     menuMenuCalendarrio = ko.observable(true);
                     //menuTricel = ko.observable(true);
@@ -321,13 +330,16 @@ function Menu()
                     menuProyecto = ko.observable(true);
                     menuProyectoListar = ko.observable(true);
                     menuMenuReportes = ko.observable(true);
+                    */
                     permitirCrear = ko.observable(true);
                     break;
                 default:
                     menuMenu = ko.observable(true);
+                    /*
                     menuMenuRendiciones = ko.observable(true);
                     menuMenuDocumentos = ko.observable(true);
                     menuMenuCalendarrio = ko.observable(true);
+                    */
                     break;
             }
 
@@ -341,34 +353,7 @@ function Menu()
             //hijos
             menuMenuUsuarios = ko.observable(false);
             menuMenuInstituciones = ko.observable(false);
-            menuMenuRendiciones = ko.observable(false);
-            menuMenuDocumentos = ko.observable(false);
-            menuMenuCalendarrio = ko.observable(false);
-            menuMenuCargaMasiva = ko.observable(false);
-            menuMenuReportes = ko.observable(false);
-            //tricel
-            menuTricel = ko.observable(false);
-            //hijo
-            menuTricelListar = ko.observable(false);
-            //proyecto
-            menuProyecto = ko.observable(false);
-            //hijo
-            menuProyectoListar = ko.observable(false);
-            menuLogs = ko.observable(false);
-            //mostrar reporte Usuarios
-            mostrarRptUsuarios = ko.observable(false);
-            //mostrar reporte instituciones
-            mostrarRptInstituciones = ko.observable(false);   
-        }
-    }
-    else
-    {
-            shouldShowMessage = ko.observable(false);
-            //ahora procesamos el menu
-            menuMenu = ko.observable(false);
-            //hijos
-            menuMenuUsuarios = ko.observable(false);
-            menuMenuInstituciones = ko.observable(false);
+            /*
             menuMenuRendiciones = ko.observable(false);
             menuMenuDocumentos = ko.observable(false);
             menuMenuCalendarrio = ko.observable(false);
@@ -387,6 +372,37 @@ function Menu()
             mostrarRptUsuarios = ko.observable(false);
             //mostrar reporte instituciones
             mostrarRptInstituciones = ko.observable(false);
+            */
+        }
+    }
+    else
+    {
+            shouldShowMessage = ko.observable(false);
+            //ahora procesamos el menu
+            menuMenu = ko.observable(false);
+            //hijos
+            menuMenuUsuarios = ko.observable(false);
+            menuMenuInstituciones = ko.observable(false);
+            /*
+            menuMenuRendiciones = ko.observable(false);
+            menuMenuDocumentos = ko.observable(false);
+            menuMenuCalendarrio = ko.observable(false);
+            menuMenuCargaMasiva = ko.observable(false);
+            menuMenuReportes = ko.observable(false);
+            //tricel
+            menuTricel = ko.observable(false);
+            //hijo
+            menuTricelListar = ko.observable(false);
+            //proyecto
+            menuProyecto = ko.observable(false);
+            //hijo
+            menuProyectoListar = ko.observable(false);
+            menuLogs = ko.observable(false);
+            //mostrar reporte Usuarios
+            mostrarRptUsuarios = ko.observable(false);
+            //mostrar reporte instituciones
+            mostrarRptInstituciones = ko.observable(false);
+            */
     }
 
 

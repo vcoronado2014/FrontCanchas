@@ -1,5 +1,5 @@
 /**
- * Created by VICTOR CORONADO on 26/06/2017.
+ * Created by VICTOR CORONADO on 29/06/2017.
  */
 
 $(document).ready(function () {
@@ -25,7 +25,7 @@ $(document).ready(function () {
         //manejo de la sesión
         self.iconoSesion = ko.observable('<i class="fa fa-sign-in"></i> Iniciar Sesión');
         if (sessionStorage.length > 0){
-        
+
             if (self.id != null && self.id() > 0)
             {
                 self.iconoSesion = ko.observable('<i class="fa fa-close"></i> Cerrar Sesión');
@@ -50,7 +50,7 @@ $(document).ready(function () {
         eliminar = function (element){
             Elimina(element);
         }
-        
+
         self.titulo =  ko.observable('Listar ');
 
         ko.mapping.fromJS(data, {}, self);
@@ -63,13 +63,13 @@ $(document).ready(function () {
     //obtención de los datos
     var idRequest = sessionStorage.getItem("InstId");
 
-    var obtenerTipoCancha = jQuery.ajax({
-        url : ObtenerUrlDos('TipoCancha') + '?instId=' + idRequest,
+    var obtenerCanchas = jQuery.ajax({
+        url : ObtenerUrl('Canchas') + '?instId=' + idRequest,
         type: 'GET',
         dataType : "json"
     });
 
-    $.when(obtenerTipoCancha).then(
+    $.when(obtenerCanchas).then(
         function(dataTipoCancha){
             elem = document.getElementById('principal');
             //acá hay que procesar la data ya adecuarla a la vista nueva
@@ -82,7 +82,7 @@ $(document).ready(function () {
                 for (var i in dataTipoCancha){
                     var s = {
                         Nombre: dataTipoCancha[i].Nombre,
-                        UrlEditar: 'CrearTipoCancha.html?id=' + dataTipoCancha[i].Id,
+                        UrlEditar: 'CrearCancha.html?id=' + dataTipoCancha[i].Id,
                         Id: dataTipoCancha[i].Id
                     }
                     data.proposals[i] = s;
@@ -113,7 +113,7 @@ $(document).ready(function () {
 
     //cargar
     function Cargar(data){
-    
+
         ko.applyBindings(new TipoCanchaViewModel(data));
 
         $("#proposals").DataTable({
@@ -153,23 +153,23 @@ $(document).ready(function () {
 
     //eliminar
     function Elimina(elemento){
-    
+
         swal({
-                title: "Eliminar",
-                text: "¿Está seguro de eliminar " + elemento.Nombre() + "?",
-                type: "info",
-                showCancelButton: true,
-                closeOnConfirm: false,
-                customClass: 'sweetalert-xs',
-                showLoaderOnConfirm: true
-            }, function (isConfirm) {
-                if (isConfirm) {
+            title: "Eliminar",
+            text: "¿Está seguro de eliminar " + elemento.Nombre() + "?",
+            type: "info",
+            showCancelButton: true,
+            closeOnConfirm: false,
+            customClass: 'sweetalert-xs',
+            showLoaderOnConfirm: true
+        }, function (isConfirm) {
+            if (isConfirm) {
 
 
-                    setTimeout(function () {
+                setTimeout(function () {
 
                     var eliminarTC = jQuery.ajax({
-                        url : ObtenerUrlDos('TipoCancha'),
+                        url : ObtenerUrl('Canchas'),
                         type: "DELETE",
                         data: ko.toJSON({ Id: elemento.Id() }),
                         contentType: "application/json",
@@ -179,27 +179,27 @@ $(document).ready(function () {
                     $.when(eliminarTC).then(
                         function(dataEliminar){
                             //eliminado con exito
-                             swal({
-                                        title: "Eliminado",
-                                        text: "El Registro ha sido eliminado con éxito.",
-                                        type: "success",
-                                        showCancelButton: false,
-                                        confirmButtonClass: "btn-success",
-                                        confirmButtonText: "Ok",
-                                        cancelButtonText: "No, cancel plx!",
-                                        closeOnConfirm: false,
-                                        customClass: 'sweetalert-xs',
-                                        closeOnCancel: false
-                                    },
-                                    function (isConfirm) {
-                                        if (isConfirm) {
-                                            
-                                            //EnviarMensajeSignalR('Se ha eliminado una Proyecto.', "ListarProyecto.html", "4", sessionStorage.getItem("RolId"), dataF);
-                                            window.location.href = "ListarTiposCancha.html";
-                                        } else {
-                                            swal("Cancelled", "Your imaginary file is safe :)", "error");
-                                        }
-                                    });
+                            swal({
+                                    title: "Eliminado",
+                                    text: "El Registro ha sido eliminado con éxito.",
+                                    type: "success",
+                                    showCancelButton: false,
+                                    confirmButtonClass: "btn-success",
+                                    confirmButtonText: "Ok",
+                                    cancelButtonText: "No, cancel plx!",
+                                    closeOnConfirm: false,
+                                    customClass: 'sweetalert-xs',
+                                    closeOnCancel: false
+                                },
+                                function (isConfirm) {
+                                    if (isConfirm) {
+
+                                        //EnviarMensajeSignalR('Se ha eliminado una Proyecto.', "ListarProyecto.html", "4", sessionStorage.getItem("RolId"), dataF);
+                                        window.location.href = "ListarCanchas.html";
+                                    } else {
+                                        swal("Cancelled", "Your imaginary file is safe :)", "error");
+                                    }
+                                });
 
                         },
                         function (error){
@@ -208,13 +208,13 @@ $(document).ready(function () {
                         }
                     );
 
-                    }, 2000);
+                }, 2000);
 
-                }
-                else {
-                    window.location.href = "ListarProyecto.html";
-                }
-            });
+            }
+            else {
+                window.location.href = "ListarProyecto.html";
+            }
+        });
     }
 
 });
