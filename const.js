@@ -212,6 +212,40 @@ function Menu()
     //ahora procesamos a variable de session
     //rescatamos el rol desde la variable de session
     //antes evaluamos si esta variable existe
+    /*
+<ol class="breadcrumb breadcrumb-arrow">
+    <li><a href="#">Menu</a></li>
+    <li class="active-bread"><span>Data</span></li>
+
+</ol>
+
+    */
+    
+
+    var breadcrumb = '<li><a href="#"><i class="fa fa-home"></i> Inicio</a></li>';
+
+    var urlActual = location.href;
+    if (urlActual.indexOf("Inicio.html") !=-1) {
+        breadcrumb += '<li class="active-bread"><span>Inicio</span></li>';
+    }
+    if (urlActual.indexOf("ListarCanchas.html") !=-1) {
+        breadcrumb += '<li class="active-bread"><span>Mis Canchas</span></li>';
+    }
+    if (urlActual.indexOf("ListarTiposCancha.html") !=-1) {
+        breadcrumb += '<li class="active-bread"><span>Tipos de Cancha</span></li>';
+    }
+    if (urlActual.indexOf("CrearCancha.html") !=-1) {
+        breadcrumb += '<li class="active-bread"><span>Mis Canchas</span></li>';
+    }
+    if (urlActual.indexOf("CrearTipoCancha.html") !=-1) {
+        breadcrumb += '<li class="active-bread"><span>Tipos de Cancha</span></li>';
+    }
+    if (urlActual.indexOf("Contacto.html") !=-1) {
+        breadcrumb += '<li class="active-bread"><span>Contacto</span></li>';
+    }    
+    $('#olMenu').append(breadcrumb);
+    //mostramos el elemento
+
     if (sessionStorage != null)
     {
         var rolId = sessionStorage.getItem("RolId");
