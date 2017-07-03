@@ -3,54 +3,6 @@ $(function () {
     $('#principal').hide();
     $('#loading').show();
 
-
-    if (sessionStorage != null) {
-
-        if (sessionStorage.getItem("Id") != null) {
-            $('#ancoreSesion').html('<i class="fa fa-close"></i> Cerrar Sesión');
-        }
-        else {
-            $('#ancoreSesion').html('<i class="fa fa-sign-in"></i> Iniciar Sesión');
-            window.location.href = "index.html";
-            return;
-        }
-    }
-    else {
-        window.location.href = "index.html";
-    }
-
-    $('#ancoreSesion').on('click', function () {
-        if ($('#ancoreSesion').html() == '<i class="fa fa-close"></i> Cerrar Sesión')
-        {
-            //acá debe direccionarlo directamente al login y vaciar la variable de session
-
-            if (sessionStorage.getItem("ES_CPAS") == "true")
-            {
-                window.location.href = 'indexCpas.html';
-            }
-            else
-            {
-                window.location.href = 'index.html';
-            }
-            sessionStorage.clear();
-            return;
-        }
-        else
-        {
-            //directo al login
-            if (sessionStorage.getItem("ES_CPAS") == "true")
-            {
-                window.location.href = 'indexcpas.html';
-            }
-            else
-            {
-                window.location.href = 'index.html';
-            }
-        }
-
-
-    });
-
     $('[data-toggle="tooltip"]').tooltip()
     // knockout view model
     function ViewModel(data) {
@@ -59,17 +11,28 @@ $(function () {
         self.nombreRol = ko.observable(sessionStorage.getItem("NombreRol"));
         nombreInstitucion = ko.observable(sessionStorage.getItem("NombreInstitucion"));
         self.birthDay = ko.observable(moment(new Date()).format("DD-MM-YYYY"));
-        // knockout mapping JSON data to view model
-        //cambios en los roles //1,2,3,5,6
 
-        /*
-        if (sessionStorage.getItem("RolId") == '1' || sessionStorage.getItem("RolId") == '2'
-            || sessionStorage.getItem("RolId") == '3' || sessionStorage.getItem("RolId") == '5'
-            || sessionStorage.getItem("RolId") == '6')
-            shouldShowMessage = ko.observable(true);
-        else
-            shouldShowMessage = ko.observable(false);
-        */
+        //manejo de la sesión
+        self.iconoSesion = ko.observable('<i class="fa fa-sign-in"></i> Iniciar Sesión');
+        if (sessionStorage.length > 0){
+
+            if (self.id != null && self.id() > 0)
+            {
+                self.iconoSesion = ko.observable('<i class="fa fa-close"></i> Cerrar Sesión');
+            }
+        }
+        else{
+            window.location.href = "index.html";
+        }
+
+        self.cerrarSesion = function(element){
+            if (element.iconoSesion() == '<i class="fa fa-close"></i> Cerrar Sesión')
+            {
+                sessionStorage.clear();
+                window.location.href = "index.html";
+
+            }
+        }
 
         Menu();
 

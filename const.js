@@ -242,7 +242,13 @@ function Menu()
     }
     if (urlActual.indexOf("Contacto.html") !=-1) {
         breadcrumb += '<li class="active-bread"><span>Contacto</span></li>';
-    }    
+    }  
+    if (urlActual.indexOf("usuarios.html") !=-1) {
+        breadcrumb += '<li class="active-bread"><span>Usuarios</span></li>';
+    }
+    if (urlActual.indexOf("CrearModificarUsuario.html") !=-1) {
+        breadcrumb += '<li class="active-bread"><span>Usuarios</span></li>';
+    }       
     $('#olMenu').append(breadcrumb);
     //mostramos el elemento
 
@@ -258,8 +264,9 @@ function Menu()
             //hijos
             menuMenuUsuarios = ko.observable(false);
             menuMenuInstituciones = ko.observable(false);
+            menuMenuTiposCancha = ko.observable(false);
             /*
-            menuMenuRendiciones = ko.observable(false);
+            menuMenuTiposCancha = ko.observable(false);
             menuMenuDocumentos = ko.observable(false);
             menuMenuCalendarrio = ko.observable(false);
             menuMenuCargaMasiva = ko.observable(false);
@@ -280,91 +287,34 @@ function Menu()
             */
             switch(rolId)
             {
-                //super
+                //super administrador
                 case '1':
                     shouldShowMessage = ko.observable(true);
 
                     menuMenu = ko.observable(true);
                     menuMenuUsuarios = ko.observable(true);
                     menuMenuInstituciones = ko.observable(true);
-                    /*
-                    menuMenuRendiciones = ko.observable(true);
-                    menuMenuDocumentos = ko.observable(true);
-                    menuMenuCalendarrio = ko.observable(true);
-                    menuTricel = ko.observable(true);
-                    menuTricelListar = ko.observable(true);
-                    menuProyecto = ko.observable(true);
-                    menuProyectoListar = ko.observable(true);
-                    menuMenuCargaMasiva = ko.observable(true);
-                    menuMenuReportes = ko.observable(true);
-                    menuLogs = ko.observable(true);
-                    //mostrar reporte Usuarios
-                    mostrarRptUsuarios = ko.observable(true);
-                    //mostrar reporte instituciones
-                    mostrarRptInstituciones = ko.observable(true);
-                    */
+                    menuMenuTiposCancha = ko.observable(true);
+
                     permitirCrear = ko.observable(true);            
                     break;
-                //administrador centro educacional
+                //administrador
                 case '2':
                     shouldShowMessage = ko.observable(true);
 
                     menuMenu = ko.observable(true);
                     menuMenuUsuarios = ko.observable(true);
-                    //menuMenuInstituciones = ko.observable(true);
-                    /*
-                    menuMenuRendiciones = ko.observable(true);
-                    menuMenuDocumentos = ko.observable(true);
-                    menuMenuCalendarrio = ko.observable(true);
-                    menuTricel = ko.observable(true);
-                    menuTricelListar = ko.observable(true);
-                    menuProyecto = ko.observable(true);
-                    menuProyectoListar = ko.observable(true);
-                    menuMenuCargaMasiva = ko.observable(true);
-                    menuMenuReportes = ko.observable(true);
-                    //mostrar reporte Usuarios
-                    mostrarRptUsuarios = ko.observable(true);
-                    */
+                    menuMenuTiposCancha = ko.observable(true);
+
                     permitirCrear = ko.observable(true);
                     break;
-                //presidente
+                //supervisor
                 case '3':
-                case '6':
                     shouldShowMessage = ko.observable(true);
 
                     menuMenu = ko.observable(true);
                     menuMenuUsuarios = ko.observable(true);
-                    //menuMenuInstituciones = ko.observable(true);
-                    /*
-                    menuMenuRendiciones = ko.observable(true);
-                    menuMenuDocumentos = ko.observable(true);
-                    menuMenuCalendarrio = ko.observable(true);
-                    //menuTricel = ko.observable(true);
-                    //menuTricelListar = ko.observable(true);
-                    menuProyecto = ko.observable(true);
-                    menuProyectoListar = ko.observable(true);
-                    menuMenuCargaMasiva = ko.observable(true);
-                    menuMenuReportes = ko.observable(true);
-                    //mostrar reporte Usuarios
-                    mostrarRptUsuarios = ko.observable(true);
-                    */
-                    permitirCrear = ko.observable(true);
-                    break;
-                //tesorero, secretario
-                case '4':
-                case '5':
-                    //shouldShowMessage = ko.observable(true);
 
-                    menuMenu = ko.observable(true);
-                    /*
-                    menuMenuDocumentos = ko.observable(true);
-                    menuMenuCalendarrio = ko.observable(true);
-                    //menuTricel = ko.observable(true);
-                    //menuTricelListar = ko.observable(true);
-                    menuProyecto = ko.observable(true);
-                    menuProyectoListar = ko.observable(true);
-                    menuMenuReportes = ko.observable(true);
-                    */
                     permitirCrear = ko.observable(true);
                     break;
                 default:
@@ -387,26 +337,7 @@ function Menu()
             //hijos
             menuMenuUsuarios = ko.observable(false);
             menuMenuInstituciones = ko.observable(false);
-            /*
-            menuMenuRendiciones = ko.observable(false);
-            menuMenuDocumentos = ko.observable(false);
-            menuMenuCalendarrio = ko.observable(false);
-            menuMenuCargaMasiva = ko.observable(false);
-            menuMenuReportes = ko.observable(false);
-            //tricel
-            menuTricel = ko.observable(false);
-            //hijo
-            menuTricelListar = ko.observable(false);
-            //proyecto
-            menuProyecto = ko.observable(false);
-            //hijo
-            menuProyectoListar = ko.observable(false);
-            menuLogs = ko.observable(false);
-            //mostrar reporte Usuarios
-            mostrarRptUsuarios = ko.observable(false);
-            //mostrar reporte instituciones
-            mostrarRptInstituciones = ko.observable(false);
-            */
+            menuMenuTiposCancha = ko.observable(false);
         }
     }
     else
@@ -417,26 +348,8 @@ function Menu()
             //hijos
             menuMenuUsuarios = ko.observable(false);
             menuMenuInstituciones = ko.observable(false);
-            /*
-            menuMenuRendiciones = ko.observable(false);
-            menuMenuDocumentos = ko.observable(false);
-            menuMenuCalendarrio = ko.observable(false);
-            menuMenuCargaMasiva = ko.observable(false);
-            menuMenuReportes = ko.observable(false);
-            //tricel
-            menuTricel = ko.observable(false);
-            //hijo
-            menuTricelListar = ko.observable(false);
-            //proyecto
-            menuProyecto = ko.observable(false);
-            //hijo
-            menuProyectoListar = ko.observable(false);
-            menuLogs = ko.observable(false);
-            //mostrar reporte Usuarios
-            mostrarRptUsuarios = ko.observable(false);
-            //mostrar reporte instituciones
-            mostrarRptInstituciones = ko.observable(false);
-            */
+            menuMenuTiposCancha = ko.observable(false);
+
     }
 
 

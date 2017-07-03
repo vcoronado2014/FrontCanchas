@@ -1,97 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head runat="server">
-    <title>Usuarios</title>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- Bootstrap -->
-    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="." />
+    <meta name="keywords" content="HTML, CSS, JS, JavaScript, framework, metro, front-end, frontend, web development" />
+    <meta name="author" content="Victor Coronado" />
+    <title>Mis Canchas</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylehseet" type="text/css" href="https://cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css" />
+    <link rel="stylehseet" type="text/css" href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.dataTables.min.css" />
 
-    <link href="Content/datatables.boostrap.css" rel="stylesheet" type="text/css"/>
-    <link rel="stylehseet" type="text/css" href="//cdn.datatables.net/responsive/1.0.1/css/dataTables.responsive.css" />
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
     <!-- Custom Fonts -->
     <link href="Content/font-awesome.min.css" rel="stylesheet" type="text/css"/>
 
-    <link href="Content/pnotify.custom.min.css" rel="stylesheet" />
+    <!-- metis menu -->
+    <link href="Content/metisMenu.min.css" rel="stylesheet" type="text/css"/>
 
-    <link href="Content/site.css" rel="stylesheet" />
+    <!-- sb admin -->
+    <link href="Content/sb-admin-2.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="Content/jquery.validate.bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.min.css"/>
+    <link href="Content/morris.css" rel="stylesheet" />
     <link href="Content/sweetalert.css" rel="stylesheet" />
+
+    <link href="Content/pnotify.custom.min.css" rel="stylesheet" />
+    <link href="css/mdb.css" rel="stylesheet" />
+    <link href="Content/site.css" rel="stylesheet" />
+
+
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- jQuery -->
+    <script src="Scripts/jquery-1.11.3.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="Scripts/bootstrap.min.js"></script>
+
+    <script src="Scripts/knockout-3.4.1.js"></script>
+    <!-- KnockoutJS Mapping http://knockoutjs.com/documentation/plugins-mapping.html -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/knockout.mapping/2.4.1/knockout.mapping.min.js"></script>
+    <!-- jQuery DataTables http://datatables.net -->
+    <script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+
+    <!-- Bootstrap DataTables http://www.datatables.net/manual/styling/bootstrap
+    <script src="https://cdn.datatables.net/1.10.5/js/dataTables.bootstrap.min.js"></script>
+    -->
+
+    <!-- Responsive DataTables http://www.datatables.net/extensions/responsive/ -->
+    <script src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script>
+
+
+
+    <script src="Scripts/jquery.validate.min.js"></script>
+
+    <script src="Scripts/sweetalert.js"></script>
+    <script src="Scripts/pnotify.custom.min.js"></script>
+
+    <script src="Scripts/moment.js"></script>
+
+    <script src="Scripts/lib/raphael.min.js"></script>
+    <script src="Scripts/morris.js"></script>
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.min.js"></script>
+    <script src="Scripts/sb-admin-2.js"></script>
+    <script src="Scripts/metisMenu.js"></script>
+    <script src="js/mdb.js"></script>
+
+    <script src="js/jquery.signalR-2.2.0.js"></script>
+    <script src="http://signalr.cpas.cl/signalr/hubs"></script>
+    <script src="app_script/signalrApp.js"></script>
+    <!-- infuser.js -->
+
+    <script src="Scripts/infuser.js"></script>
+    <script src="Scripts/koExternalTemplateEngine_all.js"></script>
+
+    <script src="const.js"></script>
+
+    <script src="app_script/Usuarios.js"></script>
+
+
+
+
 </head>
 <body class="bodyFixed">
 <div class="container" id="loading">
 </div>
 
 <div class="container" id="principal">
+    <ol id="olMenu" class="breadcrumb breadcrumb-arrow">
+    </ol>    
     <!-- encabezado -->
-    <nav class="navbar navbar-inverse navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
+    <div data-bind="template: { name: 'encabezado', templateUrl: 'templates',  ajax: { cache: false } }"></div>
 
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" style="margin-right: 70px;">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand fg-white" style="cursor: pointer;"  data-bind="text: nombreInstitucion" onclick="IrInicio()"></a>
-            </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="Inicio.html"><i class="fa fa-home"></i> Inicio</a></li>
-                    <li style="cursor: pointer;"><a  id="ancoreSesion"><i class="fa fa-sign-in"></i> Iniciar Sesión</a></li>
-                    <li data-bind="visible: menuMenu" class="dropdown active">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li data-bind="visible: menuMenuUsuarios"><a href="usuarios.html">Usuarios</a></li>
-                            <li data-bind="visible: menuMenuInstituciones" role="separator" class="divider"></li>
-                            <li data-bind="visible: menuMenuInstituciones"><a href="ListarInstitucion.html">Intituciones</a></li>
-                            <li data-bind="visible: menuMenuRendiciones" role="separator" class="divider"></li>
-                            <li data-bind="visible: menuMenuRendiciones"><a href="ListarRendicion.html">Rendiciones</a></li>
-                            <li data-bind="visible: menuMenuDocumentos" role="separator" class="divider"></li>
-                            <li data-bind="visible: menuMenuDocumentos"><a href="ListarDocumento.html">Documentos de Usuario</a></li>
-                            <li data-bind="visible: menuMenuCalendarrio" role="separator" class="divider"></li>
-                            <li data-bind="visible: menuMenuCalendarrio"><a href="ListarCalendario.html">Calendario</a></li>
-                            <li data-bind="visible: menuMenuCargaMasiva" role="separator" class="divider"></li>
-                            <li data-bind="visible: menuMenuCargaMasiva"><a href="CargaMasiva.html">Carga Masiva</a></li>
-                            <li data-bind="visible: menuMenuReportes" role="separator" class="divider"></li>
-                            <li data-bind="visible: menuMenuReportes"><a href="InicioReportes.html">Reportes</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown" data-bind="visible: menuTricel">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tricel <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a data-bind="visible: menuTricelListar" href="ListarVotacion.html">Listar Triceles</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown" data-bind="visible: menuProyecto">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Proyectos <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a data-bind="visible: menuProyectoListar" href="ListarProyecto.html">Listar Proyectos</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="Contacto.html" id="contacto"><i class="fa fa-sign-in"></i> Contacto</a></li>
-                    <li data-bind="visible: menuLogs"><a href="Logs.html" id="logs"><i class="fa fa-info-circle"></i> Logs</a></li>
-                    <li><a href="#" id="infoUsuarios"></a></li>
-                </ul>
-            </div>
-        </div>
-
-
-    </nav>
-
-    <nav class="navbar navbar-default navbar-fixed-bottom">
-        <div class="container-fluid">
-            <a href="#"><i class="fa fa-user-circle"></i>&nbsp;<span data-bind="text: nombreCompleto"></span>&nbsp;<span data-bind="text: nombreRol"></span></a>
-            <a href="#" class="pull-right"><i class="fa fa-calendar"></i>&nbsp;<span data-bind="text: birthDay"></span></a>
-        </div>
-    </nav>
+    <!-- pie -->
+    <div data-bind="template: { name: 'pie', templateUrl: 'templates',  ajax: { cache: false } }"></div>
 
     <div class="col-xs-12 page-header">
         <h3 class="col-xs-9 col-md-10">Listado <small>de Usuarios</small></h3>
@@ -126,39 +139,6 @@
 
 </div>
 
-<!-- Include ALL THE SCRIPTS -->
 
-<!-- jQuery http://jquery.com -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
-<!-- Bootstrap http://getbootstrap.com -->
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
-<!-- KnockoutJS http://knockoutjs.com/ -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.2.0/knockout-min.js"></script>
-
-<!-- KnockoutJS Mapping http://knockoutjs.com/documentation/plugins-mapping.html -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/knockout.mapping/2.4.1/knockout.mapping.min.js"></script>
-
-<!-- jQuery DataTables http://datatables.net -->
-<script src="//cdn.datatables.net/1.10.2/js/jquery.dataTables.js"></script>
-
-<!-- Bootstrap DataTables http://www.datatables.net/manual/styling/bootstrap -->
-<script src="//cdn.datatables.net/plug-ins/a5734b29083/integration/bootstrap/3/dataTables.bootstrap.js"></script>
-
-<!-- Responsive DataTables http://www.datatables.net/extensions/responsive/ -->
-<script src="//cdn.datatables.net/responsive/1.0.1/js/dataTables.responsive.js"></script>
-
-<script src="Scripts/sweetalert.js"></script>
-
-<script src="Scripts/pnotify.custom.min.js"></script>
-<script src="Scripts/moment.js"></script>
-
-<script src="js/jquery.signalR-2.2.0.js"></script>
-<script src="http://signalr.cpas.cl/signalr/hubs"></script>
-<script src="app_script/signalrApp.js"></script>
-
-<script src="const.js"></script>
-<script src="app_script/Usuarios.js"></script>
 </body>
 </html>
